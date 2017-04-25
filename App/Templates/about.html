@@ -1,57 +1,46 @@
 <link href="/App/Styles/style.css" rel="stylesheet" />
 <div class="container" ng-controller='aboutController'>
-    <h6><a ui-sref="home">Back to home</a></h6>
-    <div>
-        <h1>{{phoneInfo.name}}</h1>
-        <img class="phone" src="/App/Image/mobile.jpg">
-        <p>{{phoneInfo.description}}</p>
+	<h3><a ui-sref="home">Back to home</a></h3>
+	<div>
+		<h1>{{phoneInfo.name}}</h1>
+		<img class="phone" src="/App/Image/mobile.jpg">
+		<p>
+			<h3>Description :</h3>{{phoneInfo.description}}</p>
+	</div>
 
-        <ul class="phone-thumbs">
+	<div class="container">
+		<div class="box first" ng-click="getContaint($event)">
+			<h4>Availability and Networks</h4>
+			<ul ng-repeat="item in phoneInfo.battery">
+				<li>
+					{{item}}
+				</li>
+			</ul>
 
-        </ul>
+		</div>
 
-        <ul class="specs">
-            <li>
-                <span>Availability and Networks</span>
+		<div class="box second" ng-click="getContaint($event)">
+			<h4>Battery</h4>
 
-            </li>
-            <li>
-                <span>Battery</span>
+			<ul ng-repeat="item in phoneInfo.availability">
+				<li>
+					{{item}}
+				</li>
+			</ul>
 
-            </li>
-            <li>
-                <span>Storage and Memory</span>
+		</div>
 
-            </li>
-            <li>
-                <span>Connectivity</span>
+		<div class="box third" ng-click="getContaint($event)">
+			<h4>Storage and Memory</h4>
+			<ul ng-repeat="item in phoneInfo.storage">
+				<li>
+					{{item}}
+				</li>
+			</ul>
 
-            </li>
-            <li>
-                <span>Android</span>
 
-            </li>
-            <li>
-                <span>Size and Weight</span>
+		</div>
 
-            </li>
-            <li>
-                <span>Display</span>
 
-            </li>
-            <li>
-                <span>Hardware</span>
-
-            </li>
-            <li>
-                <span>Camera</span>
-
-            </li>
-            <li>
-                <span>Additional Features</span>
-
-            </li>
-        </ul>
-        </phone-detail>
-    </div>
+	</div>
 </div>

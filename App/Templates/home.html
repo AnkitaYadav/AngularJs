@@ -1,41 +1,54 @@
 <link href="/App/Styles/style.css" rel="stylesheet" />
 <div class="container" ng-controller='homeController'>
-    <h3>{{pageName}}</h3>
+	<div class="container">
+		<div class="input-group input-group-lg searchtext">
+			<input type="text" class="form-control" placeholder="Search by name" ng-model='phoneName'>
+			<div class="input-group-btn">
+				<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+			</div>
+		</div>
+		<div class="ui-dropdown">
+			<label style="color:#ccc;    font-size: 18px;">Select Page Size :</label>
+			<select ng-options="option for option in [5,10,15]" ng-model="pageSize" style="width: 100px;height: 30px;" ng-change='getPageSize(pageSize)'></select>
+		</div>
 
-    <section>
-        <!--for demo wrap-->
+	</div>
 
-        <div class="tbl-header">
-            <table cellpadding="0" cellspacing="0" border="0">
-                <thead>
-                    <tr>
-                        <th>Image</th>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Description</th>
+	<section>
+		<!--for demo wrap-->
 
-                    </tr>
-                </thead>
-            </table>
-        </div>
-        <div class="tbl-content">
-            <table cellpadding="0" cellspacing="0" border="0">
-                <tbody>
-                    <tr ng-repeat="phone in phoneList">
-                        <td><img style="width: 84%; height: 20%;" src="/App/Image/mobile.jpg"></td>
-                        <td>
-                            <a ui-sref='about({ id : phone.id})' style="color:white">{{phone.id}} </a></td>
-                        <td>{{phone.name}} </td>
-                        <td>{{phone.snippet}} </td>
+		<div class="tbl-header">
+			<table cellpadding="0" cellspacing="0" border="0">
+				<thead>
+					<tr>
+						<th>Image</th>
+						<th ng-click="sortBy('id')">Id</th>
+						<th ng-click="sortBy('name')">Name</th>
+						<th ng-click="sortBy('snippet')">Description</th>
 
-                    </tr>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div class="tbl-content">
+			<table cellpadding="0" cellspacing="0" border="0">
+				<tbody>
+					<tr ng-repeat="phone in phoneLists|orderBy:propertyName|filter:{name:phoneName}">
+						<td><img style=" width: 84%; height: 20%; " src="/App/Image/mobile.jpg "></td>
+						<td>
+							<a ui-sref='about({ id : phone.id})' style="color:white ">{{phone.id}} </a></td>
+						<td>{{phone.name}} </td>
+						<td>{{phone.snippet}} </td>
 
-                </tbody>
-            </table>
-        </div>
-    </section>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+		<uib-pagination ng-model="currentPage" items-per-page='pageSize' total-items='totalItems'></uib-pagination>
+	</section>
 
 
+</div>
 
-
-    <ui-view></ui-view>
+<ui-view></ui-view>

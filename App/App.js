@@ -1,37 +1,37 @@
-var app = angular.module('myApp', ['ui.router']);
+var app = angular.module('myApp', ['ui.router', 'ui.bootstrap']);
 app.config(function ($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/home');
-    $stateProvider.state({
+	$urlRouterProvider.otherwise('/phone');
+	$stateProvider.state({
 
-        name: 'home',
-        url: '/phone',
-        templateUrl: 'Templates/home.html',
-        controller: 'homeController'
+		name: 'home',
+		url: '/phone',
+		templateUrl: 'Templates/home.html',
+		controller: 'homeController'
 
-    })
-    $stateProvider.state({
+	})
+	$stateProvider.state({
 
-        name: 'home.sub',
-        url: '/sub',
-        template: '<h1>SubMenu of Home</h1>',
-        controller: 'homeController'
+		name: 'home.sub',
+		url: '/sub',
+		template: '<h1>SubMenu of Home</h1>',
+		controller: 'homeController'
 
-    })
-    $stateProvider.state({
+	})
+	$stateProvider.state({
 
-        name: 'contact',
-        url: '/contact',
-        templateUrl: 'Templates/contact.html',
-        controller: 'contactController'
+		name: 'contact',
+		url: '/contact',
+		templateUrl: 'Templates/contact.html',
+		controller: 'contactController'
 
-    })
-    $stateProvider.state({
+	})
+	$stateProvider.state({
 
-        name: 'about',
-        url: '/phone/:id',
-        templateUrl: 'Templates/about.html',
-        controller: 'aboutController'
+		name: 'about',
+		url: '/phone/:id',
+		templateUrl: 'Templates/about.html',
+		controller: 'aboutController'
 
-    });
+	});
 });
